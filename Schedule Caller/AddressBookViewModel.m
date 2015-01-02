@@ -50,33 +50,41 @@
 
 - (NSString *)formatPhoneNumber:(NSString *)originalNumber
 {
+    NSString *stringlessNumber = [originalNumber stringByReplacingOccurrencesOfString:@"\\D"
+                                                                     withString:@""
+                                                                        options:NSRegularExpressionSearch
+                                                                          range:NSMakeRange(0, originalNumber.length)];
     NSMutableString *formattedNumber = [NSMutableString string];
     
-    NSInteger numberLength = originalNumber.length;
+    NSInteger numberLength = stringlessNumber.length;
     
     NSUInteger index = 0;
     
-    if ([self hasInternationalOneInNumber:originalNumber atIndex:index]) {
+    if ([self hasInternationalOneInNumber:stringlessNumber atIndex:index]) {
         [formattedNumber appendString:@"1-"];
         index++;
     }
-    else if ([self hasLeadingPlusInNumber:originalNumber]) {
+    else if ([self hasLeadingPlusInNumber:stringlessNumber]) {
         [formattedNumber appendString:@"+"];
         index++;
         
-        if ([self hasInternationalOneInNumber:originalNumber atIndex:index]) {
+        if ([self hasInternationalOneInNumber:stringlessNumber atIndex:index]) {
             [formattedNumber appendString:@"1-"];
             index++;
         }
     }
     
     while (index < (numberLength - 4)) {
-        NSString *areaCode = [originalNumber substringWithRange:NSMakeRange(index, 3)];
+        if ([stringlessNumber characterAtIndex:index] == '(' || [stringlessNumber characterAtIndex:index] == ')') {
+            index++;
+            continue;
+        }
+        NSString *areaCode = [stringlessNumber substringWithRange:NSMakeRange(index, 3)];
         [formattedNumber appendFormat:@"%@-",areaCode];
         index += 3;
     }
     
-    NSString *remainder = [originalNumber substringFromIndex:index];
+    NSString *remainder = [stringlessNumber substringFromIndex:index];
     [formattedNumber appendString:remainder];
     
     return formattedNumber;

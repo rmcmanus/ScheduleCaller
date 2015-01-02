@@ -90,12 +90,31 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 }
 
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    NSArray *arrIndexes = [NSArray arrayWithArray:
+                           [@"A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,#"
+                            componentsSeparatedByString:@","]];
+    return arrIndexes;
+}
+
+
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    
+//}
+
+
 #pragma mark - <UITableViewDelegate>
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSString *phoneNumber = cell.detailTextLabel.text;
     
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phoneNumber]];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 
