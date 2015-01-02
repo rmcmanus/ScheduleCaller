@@ -27,11 +27,12 @@
     NSString *name = (__bridge_transfer  NSString*)ABRecordCopyCompositeName(recordReference);
     self.textLabel.text = name;
     
-    NSString *phoneNumber = nil;
+    NSString *phoneNumber = @" ";
     ABMultiValueRef phoneNumbers = ABRecordCopyValue(recordReference, kABPersonPhoneProperty);
     if(ABMultiValueGetCount(phoneNumbers) > 0){
         phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
     }
+
     self.detailTextLabel.text = phoneNumber;
 }
 
