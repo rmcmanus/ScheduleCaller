@@ -127,10 +127,10 @@
 		94B632971A567EE400CF26F9 /* Address Book */ = {
 			isa = PBXGroup;
 			children = (
+				948B71331A565F1700D5E5ED /* AddressBook.storyboard */,
 				94B6329F1A5680D900CF26F9 /* View Model */,
 				94B6329E1A567F9A00CF26F9 /* View Controller */,
 				94B6329A1A567F6100CF26F9 /* Detail Table View Cell */,
-				948B71331A565F1700D5E5ED /* AddressBook.storyboard */,
 			);
 			name = "Address Book";
 			sourceTree = "<group>";
