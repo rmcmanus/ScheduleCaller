@@ -9,6 +9,7 @@
 #import "AddressBookViewController.h"
 
 #import "AddressBookViewModel.h"
+#import "AddressBookDetailTableViewCell.h"
 
 
 @import AddressBook;
@@ -79,19 +80,11 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (AddressBookDetailTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
+    AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
     
-    ABRecordRef recordReference = (__bridge ABRecordRef)self.addressBookViewModel.objects[indexPath.row];
-    cell.textLabel.text = (__bridge_transfer  NSString*)ABRecordCopyCompositeName(recordReference);
-    
-    NSString *phoneNumber = @"";
-    ABMultiValueRef phoneNumbers = ABRecordCopyValue(recordReference, kABPersonPhoneProperty);
-    if(ABMultiValueGetCount(phoneNumbers) > 0){
-        phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
-    }
-    cell.detailTextLabel.text = phoneNumber;
+    [cell setupCellWithViewModel:self.addressBookViewModel indexPath:indexPath];
     
     return cell;
 }

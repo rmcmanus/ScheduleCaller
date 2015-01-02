@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AddressBookViewModel.h"
+
+
 @interface AddressBookDetailTableViewCell : UITableViewCell
+
+
+- (void)setupCellWithViewModel:(AddressBookViewModel *)viewModel indexPath:(NSIndexPath *)indexPath;
+
 
 @end
