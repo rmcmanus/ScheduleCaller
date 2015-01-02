@@ -10,7 +10,7 @@
 		948B71291A565F1700D5E5ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B71281A565F1700D5E5ED /* main.m */; };
 		948B712C1A565F1700D5E5ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B712B1A565F1700D5E5ED /* AppDelegate.m */; };
 		948B712F1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 948B712D1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld */; };
-		948B71321A565F1700D5E5ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B71311A565F1700D5E5ED /* ViewController.m */; };
+		948B71321A565F1700D5E5ED /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B71311A565F1700D5E5ED /* AddressBookViewController.m */; };
 		948B71351A565F1700D5E5ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 948B71331A565F1700D5E5ED /* Main.storyboard */; };
 		948B71371A565F1700D5E5ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948B71361A565F1700D5E5ED /* Images.xcassets */; };
 		948B713A1A565F1700D5E5ED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948B71381A565F1700D5E5ED /* LaunchScreen.xib */; };
@@ -34,8 +34,8 @@
 		948B712A1A565F1700D5E5ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		948B712B1A565F1700D5E5ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		948B712E1A565F1700D5E5ED /* Schedule_Caller.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schedule_Caller.xcdatamodel; sourceTree = "<group>"; };
-		948B71301A565F1700D5E5ED /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		948B71311A565F1700D5E5ED /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		948B71301A565F1700D5E5ED /* AddressBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
+		948B71311A565F1700D5E5ED /* AddressBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
 		948B71341A565F1700D5E5ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		948B71361A565F1700D5E5ED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		948B71391A565F1700D5E5ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -83,10 +83,8 @@
 		948B71251A565F1700D5E5ED /* Schedule Caller */ = {
 			isa = PBXGroup;
 			children = (
-				948B712A1A565F1700D5E5ED /* AppDelegate.h */,
-				948B712B1A565F1700D5E5ED /* AppDelegate.m */,
-				948B71301A565F1700D5E5ED /* ViewController.h */,
-				948B71311A565F1700D5E5ED /* ViewController.m */,
+				94B632981A567EF800CF26F9 /* App Delegate */,
+				94B632971A567EE400CF26F9 /* Address Book */,
 				948B71331A565F1700D5E5ED /* Main.storyboard */,
 				948B71361A565F1700D5E5ED /* Images.xcassets */,
 				948B71381A565F1700D5E5ED /* LaunchScreen.xib */,
@@ -120,6 +118,24 @@
 				948B71441A565F1700D5E5ED /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94B632971A567EE400CF26F9 /* Address Book */ = {
+			isa = PBXGroup;
+			children = (
+				948B71301A565F1700D5E5ED /* AddressBookViewController.h */,
+				948B71311A565F1700D5E5ED /* AddressBookViewController.m */,
+			);
+			name = "Address Book";
+			sourceTree = "<group>";
+		};
+		94B632981A567EF800CF26F9 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				948B712A1A565F1700D5E5ED /* AppDelegate.h */,
+				948B712B1A565F1700D5E5ED /* AppDelegate.m */,
+			);
+			name = "App Delegate";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,7 +241,7 @@
 			files = (
 				948B712C1A565F1700D5E5ED /* AppDelegate.m in Sources */,
 				948B71291A565F1700D5E5ED /* main.m in Sources */,
-				948B71321A565F1700D5E5ED /* ViewController.m in Sources */,
+				948B71321A565F1700D5E5ED /* AddressBookViewController.m in Sources */,
 				948B712F1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
