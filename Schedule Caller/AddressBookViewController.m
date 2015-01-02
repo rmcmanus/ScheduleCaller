@@ -105,11 +105,11 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
     
-    ABRecordRef ref = (__bridge ABRecordRef)self.objects[indexPath.row];
-    cell.textLabel.text =(__bridge_transfer  NSString*) ABRecordCopyCompositeName(ref);
+    ABRecordRef recordReference = (__bridge ABRecordRef)self.objects[indexPath.row];
+    cell.textLabel.text = (__bridge_transfer  NSString*)ABRecordCopyCompositeName(recordReference);
     
     NSString *phoneNumber = @"";
-    ABMultiValueRef phoneNumbers = ABRecordCopyValue(ref, kABPersonPhoneProperty);
+    ABMultiValueRef phoneNumbers = ABRecordCopyValue(recordReference, kABPersonPhoneProperty);
     if(ABMultiValueGetCount(phoneNumbers) > 0){
         phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
     }
