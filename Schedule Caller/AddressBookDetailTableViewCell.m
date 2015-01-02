@@ -8,6 +8,8 @@
 
 #import "AddressBookDetailTableViewCell.h"
 
+#import "NSString+ScheduleAdditions.h"
+
 
 @implementation AddressBookDetailTableViewCell
 
@@ -30,7 +32,7 @@
     NSString *phoneNumber = @" ";
     ABMultiValueRef phoneNumbers = ABRecordCopyValue(recordReference, kABPersonPhoneProperty);
     if(ABMultiValueGetCount(phoneNumbers) > 0){
-        phoneNumber = [viewModel formatPhoneNumber:(__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0)];
+        phoneNumber = [NSString formatPhoneNumber:(__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0)];
     }
     
     self.detailTextLabel.text = phoneNumber;

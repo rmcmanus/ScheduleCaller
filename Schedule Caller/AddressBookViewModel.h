@@ -26,7 +26,6 @@ NS_ENUM(NSInteger, AddressBookAccess) {
 
 
 - (NSInteger)checkAccessOnAddressBook;
-- (NSString *)formatPhoneNumber:(NSString *)originalNumber;
 
 
 @end

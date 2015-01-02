@@ -17,6 +17,7 @@
 		948B71461A565F1700D5E5ED /* Schedule_CallerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B71451A565F1700D5E5ED /* Schedule_CallerTests.m */; };
 		94B6329D1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B6329C1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m */; };
 		94B632A21A56810000CF26F9 /* AddressBookViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B632A11A56810000CF26F9 /* AddressBookViewModel.m */; };
+		94B632AA1A56EF0800CF26F9 /* NSString+ScheduleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B632A91A56EF0800CF26F9 /* NSString+ScheduleAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		94B6329C1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookDetailTableViewCell.m; sourceTree = "<group>"; };
 		94B632A01A56810000CF26F9 /* AddressBookViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookViewModel.h; sourceTree = "<group>"; };
 		94B632A11A56810000CF26F9 /* AddressBookViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewModel.m; sourceTree = "<group>"; };
+		94B632A81A56EF0800CF26F9 /* NSString+ScheduleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ScheduleAdditions.h"; sourceTree = "<group>"; };
+		94B632A91A56EF0800CF26F9 /* NSString+ScheduleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ScheduleAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,7 @@
 			children = (
 				94B632981A567EF800CF26F9 /* App Delegate */,
 				94B632971A567EE400CF26F9 /* Address Book */,
+				94B632A61A56EEE300CF26F9 /* Categories */,
 				948B712D1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld */,
 				948B71361A565F1700D5E5ED /* Images.xcassets */,
 				948B71261A565F1700D5E5ED /* Supporting Files */,
@@ -170,6 +174,23 @@
 				94B632A11A56810000CF26F9 /* AddressBookViewModel.m */,
 			);
 			name = "View Model";
+			sourceTree = "<group>";
+		};
+		94B632A61A56EEE300CF26F9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				94B632A71A56EEED00CF26F9 /* NSString */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		94B632A71A56EEED00CF26F9 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				94B632A81A56EF0800CF26F9 /* NSString+ScheduleAdditions.h */,
+				94B632A91A56EF0800CF26F9 /* NSString+ScheduleAdditions.m */,
+			);
+			name = NSString;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B632AA1A56EF0800CF26F9 /* NSString+ScheduleAdditions.m in Sources */,
 				948B712C1A565F1700D5E5ED /* AppDelegate.m in Sources */,
 				948B71291A565F1700D5E5ED /* main.m in Sources */,
 				948B71321A565F1700D5E5ED /* AddressBookViewController.m in Sources */,
