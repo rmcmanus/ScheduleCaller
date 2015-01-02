@@ -15,6 +15,7 @@
 		948B71371A565F1700D5E5ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948B71361A565F1700D5E5ED /* Images.xcassets */; };
 		948B713A1A565F1700D5E5ED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948B71381A565F1700D5E5ED /* LaunchScreen.xib */; };
 		948B71461A565F1700D5E5ED /* Schedule_CallerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B71451A565F1700D5E5ED /* Schedule_CallerTests.m */; };
+		94B6329D1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B6329C1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		948B713F1A565F1700D5E5ED /* Schedule CallerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Schedule CallerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		948B71441A565F1700D5E5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		948B71451A565F1700D5E5ED /* Schedule_CallerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Schedule_CallerTests.m; sourceTree = "<group>"; };
+		94B6329B1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookDetailTableViewCell.h; sourceTree = "<group>"; };
+		94B6329C1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookDetailTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +88,8 @@
 			children = (
 				94B632981A567EF800CF26F9 /* App Delegate */,
 				94B632971A567EE400CF26F9 /* Address Book */,
-				948B71361A565F1700D5E5ED /* Images.xcassets */,
-				948B71381A565F1700D5E5ED /* LaunchScreen.xib */,
 				948B712D1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld */,
+				948B71361A565F1700D5E5ED /* Images.xcassets */,
 				948B71261A565F1700D5E5ED /* Supporting Files */,
 			);
 			path = "Schedule Caller";
@@ -122,9 +124,9 @@
 		94B632971A567EE400CF26F9 /* Address Book */ = {
 			isa = PBXGroup;
 			children = (
+				94B6329E1A567F9A00CF26F9 /* View Controller */,
+				94B6329A1A567F6100CF26F9 /* Detail Table View Cell */,
 				948B71331A565F1700D5E5ED /* AddressBook.storyboard */,
-				948B71301A565F1700D5E5ED /* AddressBookViewController.h */,
-				948B71311A565F1700D5E5ED /* AddressBookViewController.m */,
 			);
 			name = "Address Book";
 			sourceTree = "<group>";
@@ -132,10 +134,29 @@
 		94B632981A567EF800CF26F9 /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
+				948B71381A565F1700D5E5ED /* LaunchScreen.xib */,
 				948B712A1A565F1700D5E5ED /* AppDelegate.h */,
 				948B712B1A565F1700D5E5ED /* AppDelegate.m */,
 			);
 			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		94B6329A1A567F6100CF26F9 /* Detail Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				94B6329B1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.h */,
+				94B6329C1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m */,
+			);
+			name = "Detail Table View Cell";
+			sourceTree = "<group>";
+		};
+		94B6329E1A567F9A00CF26F9 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				948B71301A565F1700D5E5ED /* AddressBookViewController.h */,
+				948B71311A565F1700D5E5ED /* AddressBookViewController.m */,
+			);
+			name = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +263,7 @@
 				948B712C1A565F1700D5E5ED /* AppDelegate.m in Sources */,
 				948B71291A565F1700D5E5ED /* main.m in Sources */,
 				948B71321A565F1700D5E5ED /* AddressBookViewController.m in Sources */,
+				94B6329D1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m in Sources */,
 				948B712F1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
