@@ -8,6 +8,9 @@
 
 #import "AddressBookViewController.h"
 
+#import "AddressBookViewModel.h"
+
+
 @import AddressBook;
 
 
@@ -19,8 +22,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
-@property (nonatomic, copy) NSMutableArray *objects;
-@property (nonatomic) ABAddressBookRef addressBookReference;
+@property (nonatomic, strong) AddressBookViewModel *addressBookViewModel;
 
 
 @end
@@ -29,66 +31,42 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 @implementation AddressBookViewController
 
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.addressBookViewModel = [[AddressBookViewModel alloc] init];
+    }
+    
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    CFErrorRef error = NULL;
-    self.addressBookReference = ABAddressBookCreateWithOptions(NULL, &error);
+    NSInteger accessType = [self.addressBookViewModel checkAccessOnAddressBook];
     
-    [self checkAccessOnAddressBook];
-}
-
-
-#pragma mark - Private
-
-
-- (void)checkAccessOnAddressBook
-{
-    switch (ABAddressBookGetAuthorizationStatus()) {
-        case  kABAuthorizationStatusAuthorized:
-            self.objects = (__bridge NSMutableArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(self.addressBookReference, nil, kABPersonSortByLastName);
-            [self.tableView reloadData];
-            
-            break;
-        case  kABAuthorizationStatusNotDetermined:
-            [self requestAddressBookAccess];
-            
-            break;
-        case  kABAuthorizationStatusDenied: {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
-                                                            message:@"Permission was not granted for Contacts. Please grant permission by going to \nSettings->Privacy->Contacts and enabling Whozoo to access your contacts."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Cancel"
-                                                  otherButtonTitles:@"OK", nil];
-            [alert show];
-        }
-            
-            break;
-        case  kABAuthorizationStatusRestricted: {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
-                                                            message:@"Permission was not granted for Contacts."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }
-            
-            break;
-        default:
-            break;
+    if (accessType == AddressBookAccessSucceess) {
+        [self.tableView reloadData];
     }
-}
-
-
-- (void)requestAddressBookAccess
-{
-    ABAddressBookRequestAccessWithCompletion(self.addressBookReference, ^(bool granted, CFErrorRef error) {
-        if (granted) {
-            dispatch_async(dispatch_get_main_queue(), ^{    
-            });
-        }
-    });
+    else if (accessType == AddressBookAccessDenied) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
+                                                        message:@"Permission was not granted for Contacts. Please grant permission by going to \nSettings->Privacy->Contacts and enabling Whozoo to access your contacts."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
+    }
+    else if (accessType == AddressBookAccessRestricted) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
+                                                        message:@"Permission was not granted for Contacts."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 
@@ -97,7 +75,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.objects.count;
+    return self.addressBookViewModel.objects.count;
 }
 
 
@@ -105,7 +83,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
     
-    ABRecordRef recordReference = (__bridge ABRecordRef)self.objects[indexPath.row];
+    ABRecordRef recordReference = (__bridge ABRecordRef)self.addressBookViewModel.objects[indexPath.row];
     cell.textLabel.text = (__bridge_transfer  NSString*)ABRecordCopyCompositeName(recordReference);
     
     NSString *phoneNumber = @"";

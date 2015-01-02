@@ -16,6 +16,7 @@
 		948B713A1A565F1700D5E5ED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948B71381A565F1700D5E5ED /* LaunchScreen.xib */; };
 		948B71461A565F1700D5E5ED /* Schedule_CallerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B71451A565F1700D5E5ED /* Schedule_CallerTests.m */; };
 		94B6329D1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B6329C1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m */; };
+		94B632A21A56810000CF26F9 /* AddressBookViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B632A11A56810000CF26F9 /* AddressBookViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		948B71451A565F1700D5E5ED /* Schedule_CallerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Schedule_CallerTests.m; sourceTree = "<group>"; };
 		94B6329B1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookDetailTableViewCell.h; sourceTree = "<group>"; };
 		94B6329C1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookDetailTableViewCell.m; sourceTree = "<group>"; };
+		94B632A01A56810000CF26F9 /* AddressBookViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookViewModel.h; sourceTree = "<group>"; };
+		94B632A11A56810000CF26F9 /* AddressBookViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,7 @@
 		94B632971A567EE400CF26F9 /* Address Book */ = {
 			isa = PBXGroup;
 			children = (
+				94B6329F1A5680D900CF26F9 /* View Model */,
 				94B6329E1A567F9A00CF26F9 /* View Controller */,
 				94B6329A1A567F6100CF26F9 /* Detail Table View Cell */,
 				948B71331A565F1700D5E5ED /* AddressBook.storyboard */,
@@ -157,6 +161,15 @@
 				948B71311A565F1700D5E5ED /* AddressBookViewController.m */,
 			);
 			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		94B6329F1A5680D900CF26F9 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				94B632A01A56810000CF26F9 /* AddressBookViewModel.h */,
+				94B632A11A56810000CF26F9 /* AddressBookViewModel.m */,
+			);
+			name = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +277,7 @@
 				948B71291A565F1700D5E5ED /* main.m in Sources */,
 				948B71321A565F1700D5E5ED /* AddressBookViewController.m in Sources */,
 				94B6329D1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m in Sources */,
+				94B632A21A56810000CF26F9 /* AddressBookViewModel.m in Sources */,
 				948B712F1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
