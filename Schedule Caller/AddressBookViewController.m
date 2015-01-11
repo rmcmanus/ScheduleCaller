@@ -96,7 +96,8 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
     
-    [cell setupCellWithViewModel:self.addressBookViewModel indexPath:indexPath];
+    ABRecordRef recordReference = (__bridge ABRecordRef)self.addressBookViewModel.objects[indexPath.row];
+    [cell setupCellWithRecord:recordReference indexPath:indexPath];
     
     return cell;
 }

@@ -14,7 +14,7 @@
 @interface AddressBookDetailTableViewCell : UITableViewCell
 
 
-- (void)setupCellWithViewModel:(AddressBookViewModel *)viewModel indexPath:(NSIndexPath *)indexPath;
+- (void)setupCellWithRecord:(ABRecordRef)recordReference indexPath:(NSIndexPath *)indexPath;
 
 
 @end

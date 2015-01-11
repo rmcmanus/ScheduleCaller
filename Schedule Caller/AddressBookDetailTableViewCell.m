@@ -23,9 +23,8 @@
 }
 
 
-- (void)setupCellWithViewModel:(AddressBookViewModel *)viewModel indexPath:(NSIndexPath *)indexPath
+- (void)setupCellWithRecord:(ABRecordRef)recordReference indexPath:(NSIndexPath *)indexPath
 {
-    ABRecordRef recordReference = (__bridge ABRecordRef)viewModel.objects[indexPath.row];
     NSString *name = (__bridge_transfer  NSString*)ABRecordCopyCompositeName(recordReference);
     self.textLabel.text = name;
     
