@@ -14,26 +14,26 @@
 #pragma mark - Public
 
 
-+ (NSString *)formatPhoneNumber:(NSString *)originalNumber
+- (NSString *)formatPhoneNumber
 {
-    NSString *stringlessNumber = [originalNumber stringByReplacingOccurrencesOfString:@"\\D"
-                                                                           withString:@""
-                                                                              options:NSRegularExpressionSearch
-                                                                                range:NSMakeRange(0, originalNumber.length)];
+    NSString *stringlessNumber = [self stringByReplacingOccurrencesOfString:@"\\D"
+                                                                 withString:@""
+                                                                    options:NSRegularExpressionSearch
+                                                                      range:NSMakeRange(0, self.length)];
     NSMutableString *formattedNumber = [NSMutableString string];
     
     NSInteger numberLength = stringlessNumber.length;
     NSUInteger index = 0;
     
-    if ([[NSString class] hasInternationalOneInNumber:stringlessNumber atIndex:index]) {
+    if ([self hasInternationalOneAtIndex:index]) {
         [formattedNumber appendString:@"1-"];
         index++;
     }
-    else if ([[NSString class] hasLeadingPlusInNumber:stringlessNumber]) {
+    else if ([self hasLeadingPlus]) {
         [formattedNumber appendString:@"+"];
         index++;
         
-        if ([[NSString class] hasInternationalOneInNumber:stringlessNumber atIndex:index]) {
+        if ([self hasInternationalOneAtIndex:index]) {
             [formattedNumber appendString:@"1-"];
             index++;
         }
@@ -59,15 +59,15 @@
 #pragma mark - Private
 
 
-- (BOOL)hasInternationalOneInNumber:(NSString *)originalNumber atIndex:(NSInteger)index
+- (BOOL)hasInternationalOneAtIndex:(NSInteger)index
 {
-    return [originalNumber characterAtIndex:index] == '1';
+    return [self characterAtIndex:index] == '1';
 }
 
 
-- (BOOL)hasLeadingPlusInNumber:(NSString *)originalNumber
+- (BOOL)hasLeadingPlus
 {
-    return [originalNumber characterAtIndex:0] == '+';
+    return [self characterAtIndex:0] == '+';
 }
 
 

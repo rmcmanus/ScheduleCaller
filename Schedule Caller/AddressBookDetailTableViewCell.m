@@ -32,7 +32,7 @@
     NSString *phoneNumber = @" ";
     ABMultiValueRef phoneNumbers = ABRecordCopyValue(recordReference, kABPersonPhoneProperty);
     if(ABMultiValueGetCount(phoneNumbers) > 0){
-        phoneNumber = [NSString formatPhoneNumber:(__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0)];
+        phoneNumber = [(__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0) formatPhoneNumber];
     }
     
     self.detailTextLabel.text = phoneNumber;

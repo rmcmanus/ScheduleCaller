@@ -11,7 +11,7 @@
 @interface NSString (ScheduleAdditions)
 
 
-+ (NSString *)formatPhoneNumber:(NSString *)originalNumber;
+- (NSString *)formatPhoneNumber;
 
 
 @end
