@@ -11,6 +11,8 @@
 #import "AddressBookViewModel.h"
 #import "AddressBookDetailTableViewCell.h"
 
+#import "NSArray+ScheduleCalendar.h"
+
 
 @import AddressBook;
 
@@ -74,9 +76,19 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 #pragma mark - <UITableViewDataSource>
 
 
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    NSInteger alphabetCount = [self.addressBookViewModel.objects count];
+//    
+//    return alphabetCount;
+//}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.addressBookViewModel.objects.count;
+    NSInteger alphabetCount = [self.addressBookViewModel.objects count];
+    
+    return alphabetCount;
 }
 
 
@@ -92,10 +104,9 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    NSArray *arrIndexes = [NSArray arrayWithArray:
-                           [@"A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,#"
-                            componentsSeparatedByString:@","]];
-    return arrIndexes;
+    NSArray *alphabetSectionIndexes = [NSArray alphabetArray];
+    
+    return alphabetSectionIndexes;
 }
 
 
