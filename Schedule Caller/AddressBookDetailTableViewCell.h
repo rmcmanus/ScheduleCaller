@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AddressBookViewModel.h"
+#import "AddressBookContactObject.h"
 
 
 @interface AddressBookDetailTableViewCell : UITableViewCell
 
 
-- (void)setupCellWithRecord:(ABRecordRef)recordReference indexPath:(NSIndexPath *)indexPath;
+- (void)setupCellWithRecord:(AddressBookContactObject *)contact indexPath:(NSIndexPath *)indexPath;
 
 
 @end

@@ -12,20 +12,21 @@
 
 
 NS_ENUM(NSInteger, AddressBookAccess) {
+    AddressBookAccessNull = -1,
     AddressBookAccessSucceess = 0,
     AddressBookAccessDenied,
     AddressBookAccessRestricted
 };
 
 
+typedef void (^AddressBookViewModelCompletionHandler)(NSArray *contactBook, enum AddressBookAccess accessType, NSError *error);
+
+
 @interface AddressBookViewModel : NSObject
 
-
-@property (nonatomic, copy) NSMutableArray *objects;
 @property (nonatomic) ABAddressBookRef addressBookReference;
 
 
-- (NSInteger)checkAccessOnAddressBook;
-
+- (void)checkAccessOnAddressBookWithCompletionBlock:(AddressBookViewModelCompletionHandler)completion;
 
 @end

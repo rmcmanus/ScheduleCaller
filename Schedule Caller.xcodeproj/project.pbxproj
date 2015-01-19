@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		942A88771A6C7C6500FDC909 /* AddressBookContactObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 942A88761A6C7C6500FDC909 /* AddressBookContactObject.m */; };
 		948B71291A565F1700D5E5ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B71281A565F1700D5E5ED /* main.m */; };
 		948B712C1A565F1700D5E5ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B712B1A565F1700D5E5ED /* AppDelegate.m */; };
 		948B712F1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 948B712D1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		942A88751A6C7C6500FDC909 /* AddressBookContactObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookContactObject.h; sourceTree = "<group>"; };
+		942A88761A6C7C6500FDC909 /* AddressBookContactObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookContactObject.m; sourceTree = "<group>"; };
 		948B71231A565F1700D5E5ED /* Schedule Caller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Schedule Caller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		948B71271A565F1700D5E5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		948B71281A565F1700D5E5ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -74,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		942A88781A6C7CA400FDC909 /* Contact Object */ = {
+			isa = PBXGroup;
+			children = (
+				942A88751A6C7C6500FDC909 /* AddressBookContactObject.h */,
+				942A88761A6C7C6500FDC909 /* AddressBookContactObject.m */,
+			);
+			name = "Contact Object";
+			sourceTree = "<group>";
+		};
 		948B711A1A565F1700D5E5ED = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +147,7 @@
 		94B632971A567EE400CF26F9 /* Address Book */ = {
 			isa = PBXGroup;
 			children = (
+				942A88781A6C7CA400FDC909 /* Contact Object */,
 				94B6329F1A5680D900CF26F9 /* View Model */,
 				94B6329E1A567F9A00CF26F9 /* View Controller */,
 				94B6329A1A567F6100CF26F9 /* Detail Table View Cell */,
@@ -307,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				942A88771A6C7C6500FDC909 /* AddressBookContactObject.m in Sources */,
 				94B632AA1A56EF0800CF26F9 /* NSString+ScheduleAdditions.m in Sources */,
 				948B712C1A565F1700D5E5ED /* AppDelegate.m in Sources */,
 				948B71291A565F1700D5E5ED /* main.m in Sources */,

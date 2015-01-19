@@ -9,6 +9,7 @@
 #import "AddressBookViewController.h"
 
 #import "AddressBookViewModel.h"
+#import "AddressBookContactObject.h"
 #import "AddressBookDetailTableViewCell.h"
 
 #import "NSArray+ScheduleCalendar.h"
@@ -25,6 +26,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
+@property (nonatomic, strong) NSArray *contactBook;
 @property (nonatomic, strong) AddressBookViewModel *addressBookViewModel;
 
 
@@ -49,27 +51,28 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     [super viewDidLoad];
     
-    NSInteger accessType = [self.addressBookViewModel checkAccessOnAddressBook];
-    
-    if (accessType == AddressBookAccessSucceess) {
-        [self.tableView reloadData];
-    }
-    else if (accessType == AddressBookAccessDenied) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
-                                                        message:@"Permission was not granted for Contacts. Please grant permission by going to \nSettings->Privacy->Contacts and enabling Whozoo to access your contacts."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Cancel"
-                                              otherButtonTitles:@"OK", nil];
-        [alert show];
-    }
-    else if (accessType == AddressBookAccessRestricted) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
-                                                        message:@"Permission was not granted for Contacts."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
+    [self.addressBookViewModel checkAccessOnAddressBookWithCompletionBlock:^(NSArray *contactBook, enum AddressBookAccess accessType, NSError *error) {
+        if (accessType == AddressBookAccessSucceess) {
+            self.contactBook = contactBook;
+            [self.tableView reloadData];
+        }
+        else if (accessType == AddressBookAccessDenied) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
+                                                            message:@"Permission was not granted for Contacts. Please grant permission by going to \nSettings->Privacy->Contacts and enabling Whozoo to access your contacts."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+        }
+        else if (accessType == AddressBookAccessRestricted) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
+                                                            message:@"Permission was not granted for Contacts."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
 }
 
 
@@ -86,7 +89,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger alphabetCount = [self.addressBookViewModel.objects count];
+    NSInteger alphabetCount = [self.contactBook count];
     
     return alphabetCount;
 }
@@ -96,19 +99,19 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
     
-    ABRecordRef recordReference = (__bridge ABRecordRef)self.addressBookViewModel.objects[indexPath.row];
-    [cell setupCellWithRecord:recordReference indexPath:indexPath];
+    AddressBookContactObject *contact = self.contactBook[indexPath.row];
+    [cell setupCellWithRecord:contact indexPath:indexPath];
     
     return cell;
 }
 
 
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    NSArray *alphabetSectionIndexes = [NSArray alphabetArray];
-    
-    return alphabetSectionIndexes;
-}
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//    NSArray *alphabetSectionIndexes = [NSArray alphabetArray];
+//    
+//    return alphabetSectionIndexes;
+//}
 
 
 //- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index

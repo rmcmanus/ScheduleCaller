@@ -23,17 +23,12 @@
 }
 
 
-- (void)setupCellWithRecord:(ABRecordRef)recordReference indexPath:(NSIndexPath *)indexPath
+- (void)setupCellWithRecord:(AddressBookContactObject *)contact indexPath:(NSIndexPath *)indexPath
 {
-    NSString *name = (__bridge_transfer  NSString*)ABRecordCopyCompositeName(recordReference);
+    NSString *name = contact.name;
     self.textLabel.text = name;
     
-    NSString *phoneNumber = @" ";
-    ABMultiValueRef phoneNumbers = ABRecordCopyValue(recordReference, kABPersonPhoneProperty);
-    if(ABMultiValueGetCount(phoneNumbers) > 0){
-        phoneNumber = [(__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0) formatPhoneNumber];
-    }
-    
+    NSString *phoneNumber = contact.phoneNumber;
     self.detailTextLabel.text = phoneNumber;
 }
 

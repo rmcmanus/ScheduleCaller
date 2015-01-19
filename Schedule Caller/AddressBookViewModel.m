@@ -8,23 +8,46 @@
 
 #import "AddressBookViewModel.h"
 
+#import "AddressBookContactObject.h"
+
+
+@interface AddressBookViewModel ()
+
+@property (nonatomic, strong) NSMutableArray *contactBook;
+
+@end
+
 
 @implementation AddressBookViewModel
+
+
+#pragma mark - Setup & Teardown
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.contactBook = [NSMutableArray new];
+    }
+    
+    return self;
+}
 
 
 #pragma mark - Public
 
 
-- (NSInteger)checkAccessOnAddressBook
+- (void)checkAccessOnAddressBookWithCompletionBlock:(AddressBookViewModelCompletionHandler)completionBlock
 {
     CFErrorRef error = NULL;
     self.addressBookReference = ABAddressBookCreateWithOptions(NULL, &error);
     
-    NSInteger accessType = -1;
+    NSInteger accessType = AddressBookAccessNull;
     
     switch (ABAddressBookGetAuthorizationStatus()) {
         case  kABAuthorizationStatusAuthorized:
-            self.objects = (__bridge NSMutableArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(self.addressBookReference, nil, kABPersonSortByLastName);
+            [self setupContactsArray];
             accessType = AddressBookAccessSucceess;
             
             break;
@@ -44,11 +67,26 @@
             break;
     }
     
-    return accessType;
+    if (accessType != AddressBookAccessNull) {
+        completionBlock(self.contactBook, accessType, nil);
+    }
 }
 
 
 #pragma mark - Private
+
+
+- (void)setupContactsArray
+{
+    NSArray *array = (__bridge NSMutableArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(self.addressBookReference, nil, kABPersonSortByLastName);
+    
+    for (id reference in array) {
+        ABRecordRef recordReference = (__bridge ABRecordRef)reference;
+        AddressBookContactObject *contact = [[AddressBookContactObject alloc] initWithReferenceRecord:recordReference];
+        
+        [self.contactBook addObject:contact];
+    }
+}
 
 
 - (void)requestAddressBookAccess
