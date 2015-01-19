@@ -130,6 +130,8 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phoneNumber]];
     [[UIApplication sharedApplication] openURL:url];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 
