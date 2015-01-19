@@ -82,6 +82,24 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 }
 
 
+#pragma mark - Private
+
+
+- (NSString *)titleForSection:(NSInteger)section
+{
+    return [[NSArray alphabetArray] objectAtIndex:section];
+}
+
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section
+{
+    NSString *sectionTitle = [[NSArray alphabetArray] objectAtIndex:section];
+    NSArray *alphabetCount = [self.contactDictionary objectForKey:sectionTitle];
+    
+    return [alphabetCount count];
+}
+
+
 #pragma mark - <UITableViewDataSource>
 
 
@@ -95,18 +113,21 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSArray *alphabetArray = [NSArray alphabetArray];
+    if ([self numberOfRowsInSection:section] == 0) {
+        return nil;
+    }
     
-    return alphabetArray[section];
+    NSString *title = [self titleForSection:section];
+    
+    return title;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *sectionTitle = [[NSArray alphabetArray] objectAtIndex:section];
-    NSArray *alphabetCount = [self.contactDictionary objectForKey:sectionTitle];
+    NSInteger rowCount = [self numberOfRowsInSection:section];
     
-    return [alphabetCount count];
+    return rowCount;
 }
 
 
@@ -114,7 +135,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
     
-    NSString *sectionTitle = [[NSArray alphabetArray] objectAtIndex:indexPath.section];
+    NSString *sectionTitle = [self titleForSection:indexPath.section];
     NSArray *contactsAtSection = [self.contactDictionary objectForKey:sectionTitle];
     
     AddressBookContactObject *contact = contactsAtSection[indexPath.row];
