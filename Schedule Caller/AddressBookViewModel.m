@@ -103,17 +103,43 @@
     NSMutableArray *arrayForTitle = [NSMutableArray new];
     
     for (AddressBookContactObject *contact in contactArray) {
-        if (contact.lastName == nil) {
+        if (contact.firstName == nil) {
             continue;
         }
         
-        NSString *lastNameLetter = [contact.lastName substringWithRange:NSMakeRange(0, 1)];
-        if ([lastNameLetter isEqualToString:title]) {
-            [arrayForTitle addObject:contact];
+        if (contact.lastName == nil) {
+            if ([self contactName:contact.firstName title:title index:0]) {
+                [arrayForTitle addObject:contact];
+            }
+        }
+        else {
+            if ([self contactName:contact.lastName title:title index:0]) {
+                [arrayForTitle addObject:contact];
+            }
         }
     }
     
     return arrayForTitle;
+}
+
+
+- (BOOL)contactName:(NSString *)name title:(NSString *)title index:(NSInteger)index
+{
+    if (index == ([name length] - 1)) {
+        return NO;
+    }
+    
+    NSString *lastNameLetter = [name substringWithRange:NSMakeRange(index, 1)];
+    NSCharacterSet *unwantedCharacters = [NSCharacterSet uppercaseLetterCharacterSet];
+    NSRange range = [lastNameLetter rangeOfCharacterFromSet:unwantedCharacters];
+    if (range.location == NSNotFound) {
+        return [self contactName:name title:title index:++index];
+    }
+    else if ([lastNameLetter isEqualToString:title]) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 
