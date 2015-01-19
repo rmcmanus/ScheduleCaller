@@ -25,7 +25,7 @@
 
 - (void)setupCellWithRecord:(AddressBookContactObject *)contact indexPath:(NSIndexPath *)indexPath
 {
-    NSString *name = contact.name;
+    NSString *name = contact.fullName;
     self.textLabel.text = name;
     
     NSString *phoneNumber = contact.phoneNumber;

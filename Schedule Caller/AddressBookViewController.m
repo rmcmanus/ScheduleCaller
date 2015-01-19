@@ -36,6 +36,9 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 @implementation AddressBookViewController
 
 
+#pragma mark - Setup & Teardown
+
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -45,6 +48,9 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
     
     return self;
 }
+
+
+#pragma mark - UIViewController overrides
 
 
 - (void)viewDidLoad
@@ -58,7 +64,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
         }
         else if (accessType == AddressBookAccessDenied) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Privacy Warning"
-                                                            message:@"Permission was not granted for Contacts. Please grant permission by going to \nSettings->Privacy->Contacts and enabling Whozoo to access your contacts."
+                                                            message:@"Permission was not granted for Contacts. Please grant permission by going to \nSettings->Privacy->Contacts and enabling Schedule Calling to access your contacts."
                                                            delegate:nil
                                                   cancelButtonTitle:@"Cancel"
                                                   otherButtonTitles:@"OK", nil];
@@ -76,20 +82,51 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 }
 
 
+#pragma mark - Private
+
+
+- (NSInteger)numberOfRowsAtSection:(NSInteger)section
+{
+    NSInteger numberOfRows = 0;
+    NSString *title = [[NSArray alphabetArray] objectAtIndex:section];
+    
+    for (AddressBookContactObject *contact in self.contactBook) {
+        if (contact.lastName == nil) {
+            continue;
+        }
+        
+        NSString *lastNameLetter = [contact.lastName substringWithRange:NSMakeRange(0, 1)];
+        if ([lastNameLetter isEqualToString:title]) {
+            numberOfRows++;
+        }
+    }
+    
+    return numberOfRows;
+}
+
+
 #pragma mark - <UITableViewDataSource>
 
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    NSInteger alphabetCount = [self.addressBookViewModel.objects count];
-//    
-//    return alphabetCount;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    NSInteger alphabetCount = [[NSArray alphabetArray] count];
+    
+    return alphabetCount;
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSArray *alphabetArray = [NSArray alphabetArray];
+    
+    return alphabetArray[section];
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger alphabetCount = [self.contactBook count];
+    NSInteger alphabetCount = [self numberOfRowsAtSection:section];
     
     return alphabetCount;
 }
@@ -106,18 +143,20 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 }
 
 
-//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-//{
-//    NSArray *alphabetSectionIndexes = [NSArray alphabetArray];
-//    
-//    return alphabetSectionIndexes;
-//}
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    NSArray *alphabetSectionIndexes = [NSArray alphabetArray];
+    
+    return alphabetSectionIndexes;
+}
 
 
-//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-//{
-//    
-//}
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    NSArray *alphabetArray = [NSArray alphabetArray];
+    
+    return [alphabetArray indexOfObject:title];
+}
 
 
 #pragma mark - <UITableViewDelegate>

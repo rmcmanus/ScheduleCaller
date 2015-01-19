@@ -13,7 +13,10 @@
 
 @interface AddressBookContactObject : NSObject
 
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *fullName;
+@property (nonatomic, copy) NSString *firstName;
+@property (nonatomic, copy) NSString *lastName;
+
 @property (nonatomic, copy) NSString *phoneNumber;
 
 - (id)initWithReferenceRecord:(ABRecordRef)recordReference;

@@ -34,6 +34,9 @@
 - (void)buildContactObjectFromReferenceRecord:(ABRecordRef)recordReference
 {
     NSString *name = (__bridge_transfer  NSString*)ABRecordCopyCompositeName(recordReference);
+    NSString *firstName = (__bridge NSString *)ABRecordCopyValue(recordReference, kABPersonFirstNameProperty);
+    NSString *lastName = (__bridge NSString *)ABRecordCopyValue(recordReference
+                                                      , kABPersonLastNameProperty);
     
     NSString *phoneNumber = @" ";
     ABMultiValueRef phoneNumbers = ABRecordCopyValue(recordReference, kABPersonPhoneProperty);
@@ -41,7 +44,10 @@
         phoneNumber = [(__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0) formatPhoneNumber];
     }
     
-    self.name = name;
+    self.firstName = firstName;
+    self.lastName = lastName;
+    self.fullName = name;
+    
     self.phoneNumber = phoneNumber;
 }
 
