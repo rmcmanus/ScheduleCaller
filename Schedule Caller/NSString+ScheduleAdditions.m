@@ -25,18 +25,9 @@
     NSInteger numberLength = stringlessNumber.length;
     NSUInteger index = 0;
     
-    if ([self hasInternationalOneAtIndex:index]) {
+    if ([self hasInternationalOneAtIndex:index] || [self hasLeadingPlus]) {
         [formattedNumber appendString:@"1-"];
         index++;
-    }
-    else if ([self hasLeadingPlus]) {
-        [formattedNumber appendString:@"+"];
-        index++;
-        
-        if ([self hasInternationalOneAtIndex:index]) {
-            [formattedNumber appendString:@"1-"];
-            index++;
-        }
     }
     
     while (index < (numberLength - 4)) {
