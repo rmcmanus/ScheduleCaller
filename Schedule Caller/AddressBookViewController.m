@@ -100,6 +100,15 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 }
 
 
+#pragma mark - Actions
+
+
+- (IBAction)dismissContactSelector:(UIBarButtonItem *)sender
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 #pragma mark - <UITableViewDataSource>
 
 

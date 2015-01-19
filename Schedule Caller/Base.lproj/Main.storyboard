@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Address Book View Controller-->
+        <!--Contacts-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="AddressBookViewController" sceneMemberID="viewController">
@@ -139,14 +139,20 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="K4w-CM-aRq"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="K4w-CM-aRq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="U4L-ak-EHO">
+                            <connections>
+                                <action selector="dismissContactSelector:" destination="BYZ-38-t0r" id="Dzl-ci-JRD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Brs-fN-yDT" id="qZq-Ew-EpO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1269" y="-297.75"/>
+            <point key="canvasLocation" x="1455" y="358.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k1w-Ri-c6g">
@@ -159,12 +165,93 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Aa5-BJ-04T"/>
+                        <segue destination="J7q-pN-k2P" kind="relationship" relationship="rootViewController" id="ytC-zF-R1T"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oES-tc-fIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="369" y="-297.75"/>
+            <point key="canvasLocation" x="-105" y="-297.75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="McX-rf-din">
+            <objects>
+                <viewController id="J7q-pN-k2P" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rKb-vT-qtK"/>
+                        <viewControllerLayoutGuide type="bottom" id="IDq-rU-6lp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gi7-56-7S1">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Umg-K5-Lzs">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Umg-K5-Lzs" firstAttribute="top" secondItem="Gi7-56-7S1" secondAttribute="top" id="AeW-0W-zqV"/>
+                            <constraint firstAttribute="trailing" secondItem="Umg-K5-Lzs" secondAttribute="trailing" id="fep-is-bFd"/>
+                            <constraint firstItem="Umg-K5-Lzs" firstAttribute="leading" secondItem="Gi7-56-7S1" secondAttribute="leading" id="iew-HN-1l0"/>
+                            <constraint firstItem="IDq-rU-6lp" firstAttribute="top" secondItem="Umg-K5-Lzs" secondAttribute="bottom" id="qmI-Za-UyP"/>
+                            <constraint firstItem="Umg-K5-Lzs" firstAttribute="top" secondItem="rKb-vT-qtK" secondAttribute="bottom" constant="134" id="uOA-Uo-U08">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Umg-K5-Lzs"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="AeW-0W-zqV"/>
+                                <exclude reference="fep-is-bFd"/>
+                                <exclude reference="iew-HN-1l0"/>
+                                <exclude reference="uOA-Uo-U08"/>
+                                <exclude reference="qmI-Za-UyP"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Umg-K5-Lzs"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="AeW-0W-zqV"/>
+                                <include reference="fep-is-bFd"/>
+                                <include reference="iew-HN-1l0"/>
+                                <include reference="uOA-Uo-U08"/>
+                                <include reference="qmI-Za-UyP"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="YjL-XR-Bta">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="J9q-Xv-s58">
+                            <connections>
+                                <segue destination="2aJ-2S-kVl" kind="presentation" id="zV2-r2-6uv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0nY-wW-JNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="726" y="-297.75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="h4h-ga-SPX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2aJ-2S-kVl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FrW-Dx-OW6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="F1d-V2-vHr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQa-Ia-BWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="726" y="358.5"/>
         </scene>
     </scenes>
 </document>
