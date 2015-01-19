@@ -26,7 +26,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
-@property (nonatomic, strong) NSArray *contactBook;
+@property (nonatomic, strong) NSDictionary *contactDictionary;
 @property (nonatomic, strong) AddressBookViewModel *addressBookViewModel;
 
 
@@ -57,9 +57,9 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     [super viewDidLoad];
     
-    [self.addressBookViewModel checkAccessOnAddressBookWithCompletionBlock:^(NSArray *contactBook, enum AddressBookAccess accessType, NSError *error) {
+    [self.addressBookViewModel checkAccessOnAddressBookWithCompletionBlock:^(NSDictionary *contactDictionary, enum AddressBookAccess accessType, NSError *error) {
         if (accessType == AddressBookAccessSucceess) {
-            self.contactBook = contactBook;
+            self.contactDictionary = contactDictionary;
             [self.tableView reloadData];
         }
         else if (accessType == AddressBookAccessDenied) {
@@ -79,29 +79,6 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
             [alert show];
         }
     }];
-}
-
-
-#pragma mark - Private
-
-
-- (NSInteger)numberOfRowsAtSection:(NSInteger)section
-{
-    NSInteger numberOfRows = 0;
-    NSString *title = [[NSArray alphabetArray] objectAtIndex:section];
-    
-    for (AddressBookContactObject *contact in self.contactBook) {
-        if (contact.lastName == nil) {
-            continue;
-        }
-        
-        NSString *lastNameLetter = [contact.lastName substringWithRange:NSMakeRange(0, 1)];
-        if ([lastNameLetter isEqualToString:title]) {
-            numberOfRows++;
-        }
-    }
-    
-    return numberOfRows;
 }
 
 
@@ -126,9 +103,10 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger alphabetCount = [self numberOfRowsAtSection:section];
+    NSString *sectionTitle = [[NSArray alphabetArray] objectAtIndex:section];
+    NSArray *alphabetCount = [self.contactDictionary objectForKey:sectionTitle];
     
-    return alphabetCount;
+    return [alphabetCount count];
 }
 
 
@@ -136,7 +114,10 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
     
-    AddressBookContactObject *contact = self.contactBook[indexPath.row];
+    NSString *sectionTitle = [[NSArray alphabetArray] objectAtIndex:indexPath.section];
+    NSArray *contactsAtSection = [self.contactDictionary objectForKey:sectionTitle];
+    
+    AddressBookContactObject *contact = contactsAtSection[indexPath.row];
     [cell setupCellWithRecord:contact indexPath:indexPath];
     
     return cell;

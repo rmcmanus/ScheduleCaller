@@ -19,7 +19,7 @@ NS_ENUM(NSInteger, AddressBookAccess) {
 };
 
 
-typedef void (^AddressBookViewModelCompletionHandler)(NSArray *contactBook, enum AddressBookAccess accessType, NSError *error);
+typedef void (^AddressBookViewModelCompletionHandler)(NSDictionary *contactDictionary, enum AddressBookAccess accessType, NSError *error);
 
 
 @interface AddressBookViewModel : NSObject

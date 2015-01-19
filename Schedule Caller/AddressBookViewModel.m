@@ -9,11 +9,12 @@
 #import "AddressBookViewModel.h"
 
 #import "AddressBookContactObject.h"
+#import "NSArray+ScheduleCalendar.h"
 
 
 @interface AddressBookViewModel ()
 
-@property (nonatomic, strong) NSMutableArray *contactBook;
+@property (nonatomic, strong) NSMutableDictionary *contactDictionary;
 
 @end
 
@@ -28,7 +29,7 @@
 {
     self = [super init];
     if (self) {
-        self.contactBook = [NSMutableArray new];
+        self.contactDictionary = [NSMutableDictionary new];
     }
     
     return self;
@@ -47,7 +48,7 @@
     
     switch (ABAddressBookGetAuthorizationStatus()) {
         case  kABAuthorizationStatusAuthorized:
-            [self setupContactsArray];
+            [self setupContactsDictionary];
             accessType = AddressBookAccessSucceess;
             
             break;
@@ -68,7 +69,7 @@
     }
     
     if (accessType != AddressBookAccessNull) {
-        completionBlock(self.contactBook, accessType, nil);
+        completionBlock(self.contactDictionary, accessType, nil);
     }
 }
 
@@ -76,16 +77,43 @@
 #pragma mark - Private
 
 
-- (void)setupContactsArray
+- (void)setupContactsDictionary
 {
-    NSArray *array = (__bridge NSMutableArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(self.addressBookReference, nil, kABPersonSortByLastName);
+    NSArray *referenceArray = (__bridge NSMutableArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(self.addressBookReference, nil, kABPersonSortByLastName);
+    NSMutableArray *contactArray = [NSMutableArray new];
     
-    for (id reference in array) {
+    for (id reference in referenceArray) {
         ABRecordRef recordReference = (__bridge ABRecordRef)reference;
         AddressBookContactObject *contact = [[AddressBookContactObject alloc] initWithReferenceRecord:recordReference];
         
-        [self.contactBook addObject:contact];
+        [contactArray addObject:contact];
     }
+    
+    [[NSArray alphabetArray] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *title = (NSString *)obj;
+        NSArray *titleArray = [self contactsAtSection:idx title:title array:contactArray];
+        
+        [self.contactDictionary setObject:titleArray forKey:title];
+    }];
+}
+
+
+- (NSArray *)contactsAtSection:(NSInteger)section title:(NSString *)title array:(NSArray *)contactArray
+{
+    NSMutableArray *arrayForTitle = [NSMutableArray new];
+    
+    for (AddressBookContactObject *contact in contactArray) {
+        if (contact.lastName == nil) {
+            continue;
+        }
+        
+        NSString *lastNameLetter = [contact.lastName substringWithRange:NSMakeRange(0, 1)];
+        if ([lastNameLetter isEqualToString:title]) {
+            [arrayForTitle addObject:contact];
+        }
+    }
+    
+    return arrayForTitle;
 }
 
 
