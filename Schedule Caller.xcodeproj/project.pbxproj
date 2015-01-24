@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		94122D581A73530800DB392A /* ScheduleCallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94122D571A73530800DB392A /* ScheduleCallerViewController.m */; };
 		942A88771A6C7C6500FDC909 /* AddressBookContactObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 942A88761A6C7C6500FDC909 /* AddressBookContactObject.m */; };
+		9475FC2F1A73956D00DE1045 /* ScheduleCallerDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475FC2E1A73956D00DE1045 /* ScheduleCallerDetailTableViewCell.m */; };
 		948B71291A565F1700D5E5ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B71281A565F1700D5E5ED /* main.m */; };
 		948B712C1A565F1700D5E5ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B712B1A565F1700D5E5ED /* AppDelegate.m */; };
 		948B712F1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 948B712D1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld */; };
@@ -38,6 +39,8 @@
 		94122D571A73530800DB392A /* ScheduleCallerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCallerViewController.m; sourceTree = "<group>"; };
 		942A88751A6C7C6500FDC909 /* AddressBookContactObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookContactObject.h; sourceTree = "<group>"; };
 		942A88761A6C7C6500FDC909 /* AddressBookContactObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookContactObject.m; sourceTree = "<group>"; };
+		9475FC2D1A73956D00DE1045 /* ScheduleCallerDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCallerDetailTableViewCell.h; sourceTree = "<group>"; };
+		9475FC2E1A73956D00DE1045 /* ScheduleCallerDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCallerDetailTableViewCell.m; sourceTree = "<group>"; };
 		948B71231A565F1700D5E5ED /* Schedule Caller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Schedule Caller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		948B71271A565F1700D5E5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		948B71281A565F1700D5E5ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -83,8 +86,8 @@
 		94122D591A73530F00DB392A /* Schedule Caller */ = {
 			isa = PBXGroup;
 			children = (
-				94122D561A73530800DB392A /* ScheduleCallerViewController.h */,
-				94122D571A73530800DB392A /* ScheduleCallerViewController.m */,
+				9475FC2C1A73953D00DE1045 /* View Controller */,
+				9475FC301A73957400DE1045 /* Detail Table View Cell */,
 			);
 			name = "Schedule Caller";
 			sourceTree = "<group>";
@@ -96,6 +99,24 @@
 				942A88761A6C7C6500FDC909 /* AddressBookContactObject.m */,
 			);
 			name = "Contact Object";
+			sourceTree = "<group>";
+		};
+		9475FC2C1A73953D00DE1045 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				94122D561A73530800DB392A /* ScheduleCallerViewController.h */,
+				94122D571A73530800DB392A /* ScheduleCallerViewController.m */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		9475FC301A73957400DE1045 /* Detail Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9475FC2D1A73956D00DE1045 /* ScheduleCallerDetailTableViewCell.h */,
+				9475FC2E1A73956D00DE1045 /* ScheduleCallerDetailTableViewCell.m */,
+			);
+			name = "Detail Table View Cell";
 			sourceTree = "<group>";
 		};
 		948B711A1A565F1700D5E5ED = {
@@ -342,6 +363,7 @@
 				94B632A21A56810000CF26F9 /* AddressBookViewModel.m in Sources */,
 				948B712F1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld in Sources */,
 				94122D581A73530800DB392A /* ScheduleCallerViewController.m in Sources */,
+				9475FC2F1A73956D00DE1045 /* ScheduleCallerDetailTableViewCell.m in Sources */,
 				94DD4AEB1A6339B50030358A /* NSArray+ScheduleCalendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

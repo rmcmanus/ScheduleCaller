@@ -7,6 +7,7 @@
 //
 
 #import "ScheduleCallerViewController.h"
+#import "ScheduleCallerDetailTableViewCell.h"
 
 #import "AddressBookViewController.h"
 #import "AddressBookContactObject.h"
@@ -23,6 +24,9 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
 @property (nonatomic, strong) AddressBookViewController *contactsViewController;
 @property (nonatomic, strong) NSMutableArray *contactsArray;
 
+@property (nonatomic) NSInteger selectedIndex;
+@property (nonatomic) BOOL isSelected;
+
 @end
 
 
@@ -37,6 +41,9 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.contactsArray = [NSMutableArray new];
+        
+        self.selectedIndex = -1;
+        self.isSelected = NO;
     }
     
     return self;
@@ -68,9 +75,24 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL thisIndex = self.selectedIndex == indexPath.row;
+    BOOL indexSelected = thisIndex && self.isSelected;
+    
+    if (indexSelected) {
+        return 80.0f;
+    }
+    
+    return 45.0f;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ScheduleCallerContactReuseIdentifier];
+    ScheduleCallerDetailTableViewCell *cell = (ScheduleCallerDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:ScheduleCallerContactReuseIdentifier];
+    
+    cell.contact = self.contactsArray[indexPath.row];
     
     return cell;
 }
@@ -81,11 +103,18 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddressBookContactObject *contact = self.contactsArray[indexPath.row];
-    NSString *phoneNumber = contact.phoneNumber;
-
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phoneNumber]];
-    [[UIApplication sharedApplication] openURL:url];
+    [tableView beginUpdates];
+    
+    if (self.selectedIndex == indexPath.row) {
+        self.selectedIndex = -1;
+        self.isSelected = NO;
+    }
+    else {
+        self.selectedIndex = indexPath.row;
+        self.isSelected = YES;
+    }
+    
+    [tableView endUpdates];
 }
 
 
