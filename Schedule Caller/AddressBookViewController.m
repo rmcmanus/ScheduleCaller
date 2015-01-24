@@ -100,15 +100,6 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 }
 
 
-#pragma mark - Actions
-
-
-- (IBAction)dismissContactSelector:(UIBarButtonItem *)sender
-{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
-
-
 #pragma mark - <UITableViewDataSource>
 
 
@@ -182,6 +173,15 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
     [[UIApplication sharedApplication] openURL:url];
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+
+#pragma mark - Actions
+
+
+- (IBAction)dismissContactSelector:(UIBarButtonItem *)sender
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 

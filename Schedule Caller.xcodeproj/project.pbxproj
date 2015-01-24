@@ -111,8 +111,6 @@
 				94B632981A567EF800CF26F9 /* App Delegate */,
 				94B632971A567EE400CF26F9 /* Address Book */,
 				94B632A61A56EEE300CF26F9 /* Categories */,
-				948B712D1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld */,
-				948B71361A565F1700D5E5ED /* Images.xcassets */,
 				948B71261A565F1700D5E5ED /* Supporting Files */,
 			);
 			path = "Schedule Caller";
@@ -121,6 +119,8 @@
 		948B71261A565F1700D5E5ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				948B712D1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld */,
+				948B71361A565F1700D5E5ED /* Images.xcassets */,
 				948B71271A565F1700D5E5ED /* Info.plist */,
 				948B71281A565F1700D5E5ED /* main.m */,
 			);
