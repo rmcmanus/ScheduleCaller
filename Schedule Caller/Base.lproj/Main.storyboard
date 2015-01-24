@@ -189,25 +189,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Umg-K5-Lzs">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Umg-K5-Lzs">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scheduleCallerReuseIdentifier" textLabel="feq-mg-G1t" style="IBUITableViewCellStyleDefault" id="cgs-Hl-6d0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scheduleCallerReuseIdentifier" rowHeight="80" id="cgs-Hl-6d0">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cgs-Hl-6d0" id="Ezr-VO-FgW">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="feq-mg-G1t">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPP-3O-NEq">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    </variation>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4T-EE-9RA">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phz-Ey-SBa">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oa6-0G-cZf">
+                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                    <state key="normal" title="P">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P4T-EE-9RA" firstAttribute="baseline" secondItem="phz-Ey-SBa" secondAttribute="baseline" constant="1" id="D6q-C0-sRj">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                                </constraint>
+                                                <constraint firstItem="phz-Ey-SBa" firstAttribute="leading" secondItem="P4T-EE-9RA" secondAttribute="trailing" constant="2" id="Mdx-q8-Quf"/>
+                                                <constraint firstItem="oa6-0G-cZf" firstAttribute="leading" secondItem="Ezr-VO-FgW" secondAttribute="leading" constant="20" id="NWc-kI-zaB"/>
+                                                <constraint firstItem="rPP-3O-NEq" firstAttribute="leading" secondItem="Ezr-VO-FgW" secondAttribute="leading" constant="20" id="ULs-Pk-4UL"/>
+                                                <constraint firstItem="P4T-EE-9RA" firstAttribute="top" secondItem="rPP-3O-NEq" secondAttribute="bottom" id="ZYB-w7-8ay"/>
+                                                <constraint firstItem="rPP-3O-NEq" firstAttribute="top" secondItem="Ezr-VO-FgW" secondAttribute="top" constant="1" id="hyQ-6u-jcG"/>
+                                                <constraint firstItem="P4T-EE-9RA" firstAttribute="leading" secondItem="Ezr-VO-FgW" secondAttribute="leading" constant="20" id="iws-7f-LxU"/>
+                                                <constraint firstItem="oa6-0G-cZf" firstAttribute="top" secondItem="Ezr-VO-FgW" secondAttribute="top" constant="49" id="wgd-bO-x9w"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="rPP-3O-NEq"/>
+                                                    <exclude reference="P4T-EE-9RA"/>
+                                                    <exclude reference="phz-Ey-SBa"/>
+                                                    <exclude reference="oa6-0G-cZf"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="ULs-Pk-4UL"/>
+                                                    <exclude reference="hyQ-6u-jcG"/>
+                                                    <exclude reference="D6q-C0-sRj"/>
+                                                    <exclude reference="ZYB-w7-8ay"/>
+                                                    <exclude reference="iws-7f-LxU"/>
+                                                    <exclude reference="NWc-kI-zaB"/>
+                                                    <exclude reference="wgd-bO-x9w"/>
+                                                    <exclude reference="Mdx-q8-Quf"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="rPP-3O-NEq"/>
+                                                    <include reference="P4T-EE-9RA"/>
+                                                    <include reference="phz-Ey-SBa"/>
+                                                    <include reference="oa6-0G-cZf"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="ULs-Pk-4UL"/>
+                                                    <include reference="hyQ-6u-jcG"/>
+                                                    <include reference="D6q-C0-sRj"/>
+                                                    <include reference="ZYB-w7-8ay"/>
+                                                    <include reference="iws-7f-LxU"/>
+                                                    <include reference="NWc-kI-zaB"/>
+                                                    <include reference="wgd-bO-x9w"/>
+                                                    <include reference="Mdx-q8-Quf"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
