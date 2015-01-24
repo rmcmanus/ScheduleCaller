@@ -76,6 +76,19 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
 }
 
 
+#pragma mark - <UITableViewDelegate>
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AddressBookContactObject *contact = self.contactsArray[indexPath.row];
+    NSString *phoneNumber = contact.phoneNumber;
+
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phoneNumber]];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
+
 #pragma mark - <AddressBookDelegate>
 
 

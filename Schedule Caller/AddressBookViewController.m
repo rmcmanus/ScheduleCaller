@@ -184,13 +184,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 
 - (IBAction)sendSelectedCellsToCallerView:(id)sender
-{
-//    AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    NSString *phoneNumber = cell.detailTextLabel.text;
-//
-//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phoneNumber]];
-//    [[UIApplication sharedApplication] openURL:url];
-    
+{    
     NSArray *contactIndexPaths = [self.tableView indexPathsForSelectedRows];
     NSMutableArray *contacts = [NSMutableArray new];
     for (NSIndexPath *indexPath in contactIndexPaths) {
