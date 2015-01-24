@@ -100,6 +100,16 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 }
 
 
+- (AddressBookContactObject *)contactForIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *sectionTitle = [self titleForSection:indexPath.section];
+    NSArray *contactsAtSection = [self.contactDictionary objectForKey:sectionTitle];
+    AddressBookContactObject *contact = contactsAtSection[indexPath.row];
+    
+    return contact;
+}
+
+
 #pragma mark - <UITableViewDataSource>
 
 
@@ -135,11 +145,7 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
     
-    NSString *sectionTitle = [self titleForSection:indexPath.section];
-    NSArray *contactsAtSection = [self.contactDictionary objectForKey:sectionTitle];
-    AddressBookContactObject *contact = contactsAtSection[indexPath.row];
-    
-    [cell setupCellWithRecord:contact];
+    [cell setupCellWithRecord:[self contactForIndexPath:indexPath]];
     
     return cell;
 }
@@ -187,12 +193,9 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {    
     NSArray *contactIndexPaths = [self.tableView indexPathsForSelectedRows];
     NSMutableArray *contacts = [NSMutableArray new];
+    
     for (NSIndexPath *indexPath in contactIndexPaths) {
-        NSString *sectionTitle = [self titleForSection:indexPath.section];
-        NSArray *contactsAtSection = [self.contactDictionary objectForKey:sectionTitle];
-        AddressBookContactObject *contact = contactsAtSection[indexPath.row];
-        
-        [contacts addObject:contact];
+        [contacts addObject:[self contactForIndexPath:indexPath]];
     }
     
     if ([self.delegate respondsToSelector:@selector(addressBook:didSelectContacts:)]) {
