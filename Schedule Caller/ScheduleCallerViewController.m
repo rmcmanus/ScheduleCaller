@@ -79,9 +79,11 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
 #pragma mark - <AddressBookDelegate>
 
 
-- (void)addressBook:(AddressBookViewController *)viewController didSelectContact:(AddressBookContactObject *)contact
+- (void)addressBook:(AddressBookViewController *)viewController didSelectContacts:(NSArray *)contacts
 {
-    [self.contactsArray addObject:contact];
+    for (AddressBookContactObject *contact in contacts) {
+        [self.contactsArray addObject:contact];
+    }
     
     [self.tableView reloadData];
 }

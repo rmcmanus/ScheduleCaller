@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Brs-fN-yDT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Brs-fN-yDT">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="callerIdentifier" textLabel="Fmn-8a-0Lq" detailTextLabel="ZlP-zg-QEi" style="IBUITableViewCellStyleSubtitle" id="TCa-w0-NbO" customClass="AddressBookDetailTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="callerIdentifier" textLabel="Fmn-8a-0Lq" detailTextLabel="ZlP-zg-QEi" style="IBUITableViewCellStyleSubtitle" id="TCa-w0-NbO" customClass="AddressBookDetailTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TCa-w0-NbO" id="1u2-ho-wgc">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -140,9 +140,14 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Contacts" id="K4w-CM-aRq">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="T8M-vi-Lya">
+                            <connections>
+                                <action selector="dismissContactSelector:" destination="BYZ-38-t0r" id="rYi-hN-vBs"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="U4L-ak-EHO">
                             <connections>
-                                <action selector="dismissContactSelector:" destination="BYZ-38-t0r" id="Dzl-ci-JRD"/>
+                                <action selector="sendSelectedCellsToCallerView:" destination="BYZ-38-t0r" id="lsR-hR-StB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

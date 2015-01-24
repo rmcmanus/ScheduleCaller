@@ -23,7 +23,7 @@
 
 @protocol AddressBookDelegate <NSObject>
 
-- (void)addressBook:(AddressBookViewController *)viewController didSelectContact:(AddressBookContactObject *)contact;
+- (void)addressBook:(AddressBookViewController *)viewController didSelectContacts:(NSArray *)contacts;
 
 @end
 

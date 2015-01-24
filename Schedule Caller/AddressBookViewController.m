@@ -166,24 +166,46 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    NSString *phoneNumber = cell.detailTextLabel.text;
-//    
-//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phoneNumber]];
-//    [[UIApplication sharedApplication] openURL:url];
+    AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     
-    NSString *sectionTitle = [self titleForSection:indexPath.section];
-    NSArray *contactsAtSection = [self.contactDictionary objectForKey:sectionTitle];
-    AddressBookContactObject *contact = contactsAtSection[indexPath.row];
+    [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+}
+
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     
-    if ([self.delegate respondsToSelector:@selector(addressBook:didSelectContact:)]) {
-        [self.delegate addressBook:self didSelectContact:contact];
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    }
+    [cell setAccessoryType:UITableViewCellAccessoryNone];
 }
 
 
 #pragma mark - Actions
+
+
+- (IBAction)sendSelectedCellsToCallerView:(id)sender
+{
+//    AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    NSString *phoneNumber = cell.detailTextLabel.text;
+//
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phoneNumber]];
+//    [[UIApplication sharedApplication] openURL:url];
+    
+    NSArray *contactIndexPaths = [self.tableView indexPathsForSelectedRows];
+    NSMutableArray *contacts = [NSMutableArray new];
+    for (NSIndexPath *indexPath in contactIndexPaths) {
+        NSString *sectionTitle = [self titleForSection:indexPath.section];
+        NSArray *contactsAtSection = [self.contactDictionary objectForKey:sectionTitle];
+        AddressBookContactObject *contact = contactsAtSection[indexPath.row];
+        
+        [contacts addObject:contact];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(addressBook:didSelectContacts:)]) {
+        [self.delegate addressBook:self didSelectContacts:contacts];
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
 
 
 - (IBAction)dismissContactSelector:(UIBarButtonItem *)sender
