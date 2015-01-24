@@ -137,9 +137,9 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
     
     NSString *sectionTitle = [self titleForSection:indexPath.section];
     NSArray *contactsAtSection = [self.contactDictionary objectForKey:sectionTitle];
-    
     AddressBookContactObject *contact = contactsAtSection[indexPath.row];
-    [cell setupCellWithRecord:contact indexPath:indexPath];
+    
+    [cell setupCellWithRecord:contact];
     
     return cell;
 }
@@ -166,13 +166,20 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    NSString *phoneNumber = cell.detailTextLabel.text;
+//    AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    NSString *phoneNumber = cell.detailTextLabel.text;
+//    
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phoneNumber]];
+//    [[UIApplication sharedApplication] openURL:url];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phoneNumber]];
-    [[UIApplication sharedApplication] openURL:url];
+    NSString *sectionTitle = [self titleForSection:indexPath.section];
+    NSArray *contactsAtSection = [self.contactDictionary objectForKey:sectionTitle];
+    AddressBookContactObject *contact = contactsAtSection[indexPath.row];
     
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if ([self.delegate respondsToSelector:@selector(addressBook:didSelectContact:)]) {
+        [self.delegate addressBook:self didSelectContact:contact];
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 

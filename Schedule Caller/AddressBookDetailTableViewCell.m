@@ -23,7 +23,7 @@
 }
 
 
-- (void)setupCellWithRecord:(AddressBookContactObject *)contact indexPath:(NSIndexPath *)indexPath
+- (void)setupCellWithRecord:(AddressBookContactObject *)contact
 {
     NSString *name = contact.fullName;
     self.textLabel.text = name;

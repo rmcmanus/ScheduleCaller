@@ -13,8 +13,6 @@
 
 @interface AddressBookDetailTableViewCell : UITableViewCell
 
-
-- (void)setupCellWithRecord:(AddressBookContactObject *)contact indexPath:(NSIndexPath *)indexPath;
-
+- (void)setupCellWithRecord:(AddressBookContactObject *)contact;
 
 @end

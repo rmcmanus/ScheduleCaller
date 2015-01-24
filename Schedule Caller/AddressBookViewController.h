@@ -8,8 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@class AddressBookContactObject;
+
+
+@protocol AddressBookDelegate;
+
+
 @interface AddressBookViewController : UIViewController
 
+@property (nonatomic, weak) id<AddressBookDelegate> delegate;
+
+@end
+
+
+@protocol AddressBookDelegate <NSObject>
+
+- (void)addressBook:(AddressBookViewController *)viewController didSelectContact:(AddressBookContactObject *)contact;
 
 @end
 
