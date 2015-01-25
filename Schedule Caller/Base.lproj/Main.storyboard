@@ -283,12 +283,66 @@
                                     <outlet property="delegate" destination="J7q-pN-k2P" id="wEj-0O-4ja"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jlr-OA-Iz9" userLabel="Default View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No contacts selected! Press &quot;+&quot; to add a new contact." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz7-tW-54p">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="G2i-kx-6uF"/>
+                                            <constraint firstAttribute="width" constant="279" id="vqZ-Oy-WdN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="G2i-kx-6uF"/>
+                                                <exclude reference="vqZ-Oy-WdN"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="G2i-kx-6uF"/>
+                                                <include reference="vqZ-Oy-WdN"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="Vz7-tW-54p" secondAttribute="centerY" constant="0.5" id="izc-Vj-DNX"/>
+                                    <constraint firstAttribute="centerX" secondItem="Vz7-tW-54p" secondAttribute="centerX" constant="-0.5" id="xyX-6T-l2N"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="Vz7-tW-54p"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="izc-Vj-DNX"/>
+                                        <exclude reference="xyX-6T-l2N"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="Vz7-tW-54p"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="izc-Vj-DNX"/>
+                                        <include reference="xyX-6T-l2N"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Jlr-OA-Iz9" secondAttribute="trailing" id="8ae-pG-pSq"/>
                             <constraint firstItem="Umg-K5-Lzs" firstAttribute="top" secondItem="Gi7-56-7S1" secondAttribute="top" id="AeW-0W-zqV"/>
+                            <constraint firstItem="Jlr-OA-Iz9" firstAttribute="leading" secondItem="Gi7-56-7S1" secondAttribute="leading" id="OCg-UB-vSK"/>
                             <constraint firstAttribute="trailing" secondItem="Umg-K5-Lzs" secondAttribute="trailing" id="fep-is-bFd"/>
+                            <constraint firstItem="IDq-rU-6lp" firstAttribute="top" secondItem="Jlr-OA-Iz9" secondAttribute="bottom" id="fg2-H8-lSg"/>
                             <constraint firstItem="Umg-K5-Lzs" firstAttribute="leading" secondItem="Gi7-56-7S1" secondAttribute="leading" id="iew-HN-1l0"/>
+                            <constraint firstItem="Jlr-OA-Iz9" firstAttribute="top" secondItem="rKb-vT-qtK" secondAttribute="bottom" id="ix0-e8-JzY"/>
                             <constraint firstItem="IDq-rU-6lp" firstAttribute="top" secondItem="Umg-K5-Lzs" secondAttribute="bottom" id="qmI-Za-UyP"/>
                             <constraint firstItem="Umg-K5-Lzs" firstAttribute="top" secondItem="rKb-vT-qtK" secondAttribute="bottom" constant="134" id="uOA-Uo-U08">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
@@ -297,25 +351,35 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Umg-K5-Lzs"/>
+                                <exclude reference="Jlr-OA-Iz9"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="qmI-Za-UyP"/>
                                 <exclude reference="AeW-0W-zqV"/>
                                 <exclude reference="fep-is-bFd"/>
                                 <exclude reference="iew-HN-1l0"/>
                                 <exclude reference="uOA-Uo-U08"/>
+                                <exclude reference="8ae-pG-pSq"/>
+                                <exclude reference="OCg-UB-vSK"/>
+                                <exclude reference="ix0-e8-JzY"/>
+                                <exclude reference="fg2-H8-lSg"/>
+                                <exclude reference="qmI-Za-UyP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Umg-K5-Lzs"/>
+                                <include reference="Jlr-OA-Iz9"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="qmI-Za-UyP"/>
                                 <exclude reference="AeW-0W-zqV"/>
                                 <include reference="fep-is-bFd"/>
                                 <include reference="iew-HN-1l0"/>
                                 <include reference="uOA-Uo-U08"/>
+                                <include reference="8ae-pG-pSq"/>
+                                <include reference="OCg-UB-vSK"/>
+                                <include reference="ix0-e8-JzY"/>
+                                <include reference="fg2-H8-lSg"/>
+                                <include reference="qmI-Za-UyP"/>
                             </mask>
                         </variation>
                     </view>
@@ -327,6 +391,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyDataView" destination="Jlr-OA-Iz9" id="l1O-wW-IfJ"/>
                         <outlet property="tableView" destination="Umg-K5-Lzs" id="ibm-3k-e6w"/>
                     </connections>
                 </viewController>

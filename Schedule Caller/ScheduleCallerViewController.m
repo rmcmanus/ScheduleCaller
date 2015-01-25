@@ -22,6 +22,7 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
 @interface ScheduleCallerViewController () <UITableViewDataSource, UITableViewDelegate, AddressBookDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIView *emptyDataView;
 
 @property (nonatomic, strong) AddressBookViewController *contactsViewController;
 @property (nonatomic, strong) NSMutableArray *contactsArray;
@@ -49,6 +50,17 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
     }
     
     return self;
+}
+
+
+#pragma mark - [UIViewController Overrides]
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.emptyDataView.hidden = NO;
 }
 
 
@@ -137,6 +149,9 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
 - (void)addressBook:(AddressBookViewController *)viewController didSelectContacts:(NSArray *)contacts
 {
     self.contactsArray = [[NSMutableArray alloc] initWithArray:contacts];
+    
+    self.emptyDataView.hidden = [self.contactsArray count] > 0;
+    
     [self.tableView reloadData];
 }
 
