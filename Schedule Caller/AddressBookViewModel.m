@@ -86,7 +86,11 @@
         ABRecordRef recordReference = (__bridge ABRecordRef)reference;
         AddressBookContactObject *contact = [[AddressBookContactObject alloc] initWithReferenceRecord:recordReference];
         
-        [contactArray addObject:contact];
+        BOOL contactHasFullName = ![contact.fullName isEqualToString:@""];
+        BOOL contactHasPhoneNumber = ![contact.phoneNumber isEqualToString:@" "];
+        if (contactHasFullName && contactHasPhoneNumber) {
+            [contactArray addObject:contact];
+        }
     }
     
     [[NSArray alphabetArray] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
