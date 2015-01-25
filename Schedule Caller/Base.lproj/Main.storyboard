@@ -272,6 +272,10 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactNameLabel" destination="rPP-3O-NEq" id="n3u-Jc-xbI"/>
+                                            <outlet property="phoneNumberLabel" destination="phz-Ey-SBa" id="dP8-F7-zNs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
