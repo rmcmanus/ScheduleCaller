@@ -16,6 +16,7 @@
 
 @interface AddressBookViewController : UIViewController
 
+@property (nonatomic, copy) NSArray *selectedContacts;
 @property (nonatomic, weak) id<AddressBookDelegate> delegate;
 
 @end

@@ -20,6 +20,8 @@
     
     self.textLabel.text = nil;
     self.detailTextLabel.text = nil;
+    
+    self.accessoryType = UITableViewCellAccessoryNone;
 }
 
 

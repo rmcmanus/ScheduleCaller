@@ -145,7 +145,16 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
 {
     AddressBookDetailTableViewCell *cell = (AddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:callerCellIdentifier];
     
-    [cell setupCellWithRecord:[self contactForIndexPath:indexPath]];
+    AddressBookContactObject *contact = [self contactForIndexPath:indexPath];
+    [cell setupCellWithRecord:contact];
+    
+    for (AddressBookContactObject *selectedContact in self.selectedContacts) {
+        if ([selectedContact.fullName isEqualToString:contact.fullName]) {
+            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            break;
+        }
+    }
     
     return cell;
 }

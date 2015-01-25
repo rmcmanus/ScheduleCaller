@@ -62,6 +62,7 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
         UINavigationController *addressBookNavigationController = (UINavigationController *)segue.destinationViewController;
         self.contactsViewController = (AddressBookViewController *)(addressBookNavigationController.viewControllers[0]);
         self.contactsViewController.delegate = self;
+        self.contactsViewController.selectedContacts = self.contactsArray;
     }
 }
 
@@ -135,10 +136,7 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
 
 - (void)addressBook:(AddressBookViewController *)viewController didSelectContacts:(NSArray *)contacts
 {
-    for (AddressBookContactObject *contact in contacts) {
-        [self.contactsArray addObject:contact];
-    }
-    
+    self.contactsArray = [[NSMutableArray alloc] initWithArray:contacts];
     [self.tableView reloadData];
 }
 
