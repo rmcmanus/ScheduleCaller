@@ -90,6 +90,12 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return CGFLOAT_MIN;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ScheduleCallerDetailTableViewCell *cell = (ScheduleCallerDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:ScheduleCallerContactReuseIdentifier];
