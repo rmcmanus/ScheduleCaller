@@ -12,7 +12,7 @@
 #import "AddressBookContactObject.h"
 #import "AddressBookDetailTableViewCell.h"
 
-#import "NSArray+ScheduleCalendar.h"
+#import "NSArray+ScheduleAdditions.h"
 
 
 @import AddressBook;

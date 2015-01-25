@@ -18,10 +18,11 @@
 		948B71371A565F1700D5E5ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948B71361A565F1700D5E5ED /* Images.xcassets */; };
 		948B713A1A565F1700D5E5ED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948B71381A565F1700D5E5ED /* LaunchScreen.xib */; };
 		948B71461A565F1700D5E5ED /* Schedule_CallerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 948B71451A565F1700D5E5ED /* Schedule_CallerTests.m */; };
+		949EA0341A747F7D00E84488 /* UIColor+ScheduleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 949EA0331A747F7D00E84488 /* UIColor+ScheduleAdditions.m */; };
 		94B6329D1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B6329C1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m */; };
 		94B632A21A56810000CF26F9 /* AddressBookViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B632A11A56810000CF26F9 /* AddressBookViewModel.m */; };
 		94B632AA1A56EF0800CF26F9 /* NSString+ScheduleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B632A91A56EF0800CF26F9 /* NSString+ScheduleAdditions.m */; };
-		94DD4AEB1A6339B50030358A /* NSArray+ScheduleCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD4AEA1A6339B50030358A /* NSArray+ScheduleCalendar.m */; };
+		94DD4AEB1A6339B50030358A /* NSArray+ScheduleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD4AEA1A6339B50030358A /* NSArray+ScheduleAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,14 +56,16 @@
 		948B713F1A565F1700D5E5ED /* Schedule CallerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Schedule CallerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		948B71441A565F1700D5E5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		948B71451A565F1700D5E5ED /* Schedule_CallerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Schedule_CallerTests.m; sourceTree = "<group>"; };
+		949EA0321A747F7D00E84488 /* UIColor+ScheduleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ScheduleAdditions.h"; sourceTree = "<group>"; };
+		949EA0331A747F7D00E84488 /* UIColor+ScheduleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ScheduleAdditions.m"; sourceTree = "<group>"; };
 		94B6329B1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookDetailTableViewCell.h; sourceTree = "<group>"; };
 		94B6329C1A567F8C00CF26F9 /* AddressBookDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookDetailTableViewCell.m; sourceTree = "<group>"; };
 		94B632A01A56810000CF26F9 /* AddressBookViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookViewModel.h; sourceTree = "<group>"; };
 		94B632A11A56810000CF26F9 /* AddressBookViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewModel.m; sourceTree = "<group>"; };
 		94B632A81A56EF0800CF26F9 /* NSString+ScheduleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ScheduleAdditions.h"; sourceTree = "<group>"; };
 		94B632A91A56EF0800CF26F9 /* NSString+ScheduleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ScheduleAdditions.m"; sourceTree = "<group>"; };
-		94DD4AE91A6339B50030358A /* NSArray+ScheduleCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ScheduleCalendar.h"; sourceTree = "<group>"; };
-		94DD4AEA1A6339B50030358A /* NSArray+ScheduleCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ScheduleCalendar.m"; sourceTree = "<group>"; };
+		94DD4AE91A6339B50030358A /* NSArray+ScheduleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ScheduleAdditions.h"; sourceTree = "<group>"; };
+		94DD4AEA1A6339B50030358A /* NSArray+ScheduleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ScheduleAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +181,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		949EA0351A747F8400E84488 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				949EA0321A747F7D00E84488 /* UIColor+ScheduleAdditions.h */,
+				949EA0331A747F7D00E84488 /* UIColor+ScheduleAdditions.m */,
+			);
+			name = UIColor;
+			sourceTree = "<group>";
+		};
 		94B632971A567EE400CF26F9 /* Address Book */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +243,7 @@
 			children = (
 				94DD4AE81A6339A30030358A /* NSArray */,
 				94B632A71A56EEED00CF26F9 /* NSString */,
+				949EA0351A747F8400E84488 /* UIColor */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -247,8 +260,8 @@
 		94DD4AE81A6339A30030358A /* NSArray */ = {
 			isa = PBXGroup;
 			children = (
-				94DD4AE91A6339B50030358A /* NSArray+ScheduleCalendar.h */,
-				94DD4AEA1A6339B50030358A /* NSArray+ScheduleCalendar.m */,
+				94DD4AE91A6339B50030358A /* NSArray+ScheduleAdditions.h */,
+				94DD4AEA1A6339B50030358A /* NSArray+ScheduleAdditions.m */,
 			);
 			name = NSArray;
 			sourceTree = "<group>";
@@ -364,7 +377,8 @@
 				948B712F1A565F1700D5E5ED /* Schedule_Caller.xcdatamodeld in Sources */,
 				94122D581A73530800DB392A /* ScheduleCallerViewController.m in Sources */,
 				9475FC2F1A73956D00DE1045 /* ScheduleCallerDetailTableViewCell.m in Sources */,
-				94DD4AEB1A6339B50030358A /* NSArray+ScheduleCalendar.m in Sources */,
+				949EA0341A747F7D00E84488 /* UIColor+ScheduleAdditions.m in Sources */,
+				94DD4AEB1A6339B50030358A /* NSArray+ScheduleAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

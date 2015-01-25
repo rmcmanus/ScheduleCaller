@@ -189,9 +189,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Umg-K5-Lzs">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Umg-K5-Lzs">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scheduleCallerReuseIdentifier" rowHeight="46" id="cgs-Hl-6d0" customClass="ScheduleCallerDetailTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -243,14 +243,14 @@
                                                     <exclude reference="oa6-0G-cZf"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="ULs-Pk-4UL"/>
-                                                    <exclude reference="hyQ-6u-jcG"/>
                                                     <exclude reference="D6q-C0-sRj"/>
                                                     <exclude reference="ZYB-w7-8ay"/>
                                                     <exclude reference="iws-7f-LxU"/>
+                                                    <exclude reference="Mdx-q8-Quf"/>
+                                                    <exclude reference="ULs-Pk-4UL"/>
+                                                    <exclude reference="hyQ-6u-jcG"/>
                                                     <exclude reference="NWc-kI-zaB"/>
                                                     <exclude reference="wgd-bO-x9w"/>
-                                                    <exclude reference="Mdx-q8-Quf"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -261,14 +261,14 @@
                                                     <include reference="oa6-0G-cZf"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="ULs-Pk-4UL"/>
-                                                    <include reference="hyQ-6u-jcG"/>
                                                     <include reference="D6q-C0-sRj"/>
                                                     <include reference="ZYB-w7-8ay"/>
                                                     <include reference="iws-7f-LxU"/>
+                                                    <include reference="Mdx-q8-Quf"/>
+                                                    <include reference="ULs-Pk-4UL"/>
+                                                    <include reference="hyQ-6u-jcG"/>
                                                     <include reference="NWc-kI-zaB"/>
                                                     <include reference="wgd-bO-x9w"/>
-                                                    <include reference="Mdx-q8-Quf"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

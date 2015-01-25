@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Ryan McManus. All rights reserved.
 //
 
-#import "NSArray+ScheduleCalendar.h"
+#import "NSArray+ScheduleAdditions.h"
 
-@implementation NSArray (ScheduleCalendar)
+@implementation NSArray (ScheduleAdditions)
 
 
 + (NSArray *)alphabetArray

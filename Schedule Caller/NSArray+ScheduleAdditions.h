@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (ScheduleCalendar)
+@interface NSArray (ScheduleAdditions)
 
 
 + (NSArray *)alphabetArray;

@@ -12,6 +12,8 @@
 #import "AddressBookViewController.h"
 #import "AddressBookContactObject.h"
 
+#import "UIColor+ScheduleAdditions.h"
+
 
 static NSString *const ScheduleCallerContactReuseIdentifier = @"scheduleCallerReuseIdentifier";
 static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"ContactsNavigationSegueIdentifier";
@@ -93,6 +95,10 @@ static NSString *const ScheduleCallerContactsNavigationSegueIdentifier = @"Conta
     ScheduleCallerDetailTableViewCell *cell = (ScheduleCallerDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:ScheduleCallerContactReuseIdentifier];
     
     cell.contact = self.contactsArray[indexPath.row];
+    
+    if (indexPath.row % 2 == 0) {
+        cell.backgroundColor = [UIColor grayCellColor];
+    }
     
     return cell;
 }

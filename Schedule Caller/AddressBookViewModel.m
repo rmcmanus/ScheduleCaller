@@ -9,7 +9,7 @@
 #import "AddressBookViewModel.h"
 
 #import "AddressBookContactObject.h"
-#import "NSArray+ScheduleCalendar.h"
+#import "NSArray+ScheduleAdditions.h"
 
 
 @interface AddressBookViewModel ()
