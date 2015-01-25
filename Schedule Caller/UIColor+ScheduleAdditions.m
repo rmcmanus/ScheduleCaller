@@ -25,8 +25,8 @@ static NSDictionary *ScheduleCalendarColorScheme;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             ScheduleCalendarColorScheme = @{
-                ScheduleCalendarGrayCellColor : [self colorWithHex:0xFFD3D3D3]
-                };
+                ScheduleCalendarGrayCellColor : [self colorWithHex:0xFFF5F5F5]
+            };
         });
     }
 }
