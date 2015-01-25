@@ -197,6 +197,8 @@ static NSString *callerCellIdentifier = @"callerIdentifier";
     for (NSIndexPath *indexPath in contactIndexPaths) {
         [contacts addObject:[self contactForIndexPath:indexPath]];
     }
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
+    [contacts sortUsingDescriptors:[NSArray arrayWithObject:sort]];
     
     if ([self.delegate respondsToSelector:@selector(addressBook:didSelectContacts:)]) {
         [self.delegate addressBook:self didSelectContacts:contacts];
