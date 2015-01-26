@@ -14,6 +14,12 @@
 @implementation AddressBookContactObject
 
 
+#pragma mark - Class Methods
+
+
+
+
+
 #pragma mark - Setup & Teardown
 
 
@@ -49,6 +55,15 @@
     self.fullName = name;
     
     self.phoneNumber = phoneNumber;
+}
+
+
+#pragma mark -- Core Data Stack
+
+
++ (NSEntityDescription *)entityForObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    return [NSEntityDescription entityForName:@"Player" inManagedObjectContext:managedObjectContext];
 }
 
 
